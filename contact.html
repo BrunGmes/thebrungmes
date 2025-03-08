@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato - Bruno Gomes</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md py-4">
+    <div class="container mx-auto flex justify-between items-center px-6">
+      <a href="index.html" class="text-2xl font-bold text-gray-800">Bruno Gomes</a>
+      <ul class="flex space-x-6">
+        <li><a href="index.html" class="text-gray-600 hover:text-blue-500">Início</a></li>
+        <li><a href="about.html" class="text-gray-600 hover:text-blue-500">Sobre</a></li>
+        <li><a href="portfolio.html" class="text-gray-600 hover:text-blue-500">Portfólio</a></li>
+        <li><a href="contact.html" class="text-blue-500 hover:text-gray-600">Contato</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Seção de Contato -->
+  <section class="max-w-lg mx-auto bg-white shadow-md rounded-lg p-8 mt-12">
+    <h2 class="text-3xl font-bold text-center">Entre em Contato</h2>
+    <p class="text-gray-600 text-center mt-2">Fale comigo através do formulário abaixo ou pelas redes sociais.</p>
+
+    <form class="mt-6">
+      <label class="block mb-2 text-sm font-bold text-gray-700">Nome</label>
+      <input type="text" placeholder="Seu nome" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+      
+      <label class="block mt-4 mb-2 text-sm font-bold text-gray-700">E-mail</label>
+      <input type="email" placeholder="seu@email.com" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
+      
+      <label class="block mt-4 mb-2 text-sm font-bold text-gray-700">Mensagem</label>
+      <textarea rows="4" placeholder="Escreva sua mensagem aqui..." class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+
+      <button class="w-full bg-blue-600 text-white mt-4 px-4 py-2 rounded-md hover:bg-blue-700 transition">Enviar</button>
+    </form>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="bg-gray-900 text-white text-center py-4 mt-6">
+    <p>&copy; 2025 Bruno Gomes - Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>
