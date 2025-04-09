@@ -3,39 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfólio - Bruno Gomes</title>
+  <meta name="description" content="Portfólio de trabalhos de Bruno Gomes">
+  <title data-translate="portfolioTitleDoc">Portfólio - Bruno Gomes</title>
+  <link rel="stylesheet" href="css/styles.css">
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script defer src="js/lang.js"></script>
+  <script defer src="js/portfolio.js"></script>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="min-h-screen flex flex-col">
 
-  <!-- Navbar -->
-  <nav class="bg-white shadow-md py-4">
-    <div class="container mx-auto flex justify-between items-center px-6">
-      <a href="index.html" class="text-2xl font-bold text-gray-800">Bruno Gomes</a>
-      <ul class="flex space-x-6">
-        <li><a href="index.html" class="text-gray-600 hover:text-blue-500">Início</a></li>
-        <li><a href="about.html" class="text-gray-600 hover:text-blue-500">Sobre</a></li>
-        <li><a href="portfolio.html" class="text-blue-500 hover:text-gray-600">Portfólio</a></li>
-        <li><a href="contact.html" class="text-gray-600 hover:text-blue-500">Contato</a></li>
-      </ul>
+  <!-- Navbar Padronizada -->
+   <nav class="bg-white shadow-md py-4 sticky top-0 z-50">
+       <!-- ... (Cole a navbar padronizada completa do index.html aqui) ... -->
+        <div class="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+           <a href="index.html" data-translate="navLogo" class="text-2xl font-bold text-blue-700 hover:text-blue-600 transition duration-300 flex items-center"><svg class="w-8 h-8 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5"><path d="M12 2L3 7L12 12L21 7L12 2Z" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 17L12 22L21 17" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 12L12 17L21 12" stroke-linecap="round" stroke-linejoin="round"/></svg>BrunGmes</a>
+           <div class="hidden md:flex items-center gap-8">
+               <ul class="flex space-x-8">
+                   <li><a data-translate="navHome" href="index.html" class="nav-link text-gray-600 hover:text-blue-600 font-medium transition duration-300 py-2 border-b-2 border-transparent hover:border-blue-500">Início</a></li>
+                   <li><a data-translate="navAbout" href="about.html" class="nav-link text-gray-600 hover:text-blue-600 font-medium transition duration-300 py-2 border-b-2 border-transparent hover:border-blue-500">Sobre</a></li>
+                   <li><a data-translate="navPortfolio" href="portfolio.html" class="nav-link text-gray-600 hover:text-blue-600 font-medium transition duration-300 py-2 border-b-2 border-transparent hover:border-blue-500">Portfólio</a></li>
+                   <li><a data-translate="navContact" href="contact.html" class="nav-link text-gray-600 hover:text-blue-600 font-medium transition duration-300 py-2 border-b-2 border-transparent hover:border-blue-500">Contato</a></li>
+               </ul>
+               <div class="relative group">
+                   <button id="selected-lang" class="bg-gray-100 text-gray-700 px-4 py-2 rounded-md flex items-center gap-2 hover:bg-gray-200 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" aria-haspopup="true" aria-expanded="false" aria-controls="lang-options"></button>
+                   <div id="lang-options" class="hidden absolute right-0 bg-white border rounded-md shadow-lg w-40 mt-2 z-50 overflow-hidden" role="menu">
+                       <button data-lang="pt" class="lang-option w-full text-left px-4 py-2 hover:bg-blue-50 transition duration-300 flex items-center gap-2" role="menuitem"><span class="text-base">🇵🇹</span> Português</button>
+                       <button data-lang="en" class="lang-option w-full text-left px-4 py-2 hover:bg-blue-50 transition duration-300 flex items-center gap-2" role="menuitem"><span class="text-base">🇺🇸</span> English</button>
+                   </div>
+               </div>
+           </div>
+           <div class="md:hidden flex items-center gap-4">
+               <button id="mobile-lang-toggle" class="p-2 text-lg bg-gray-100 rounded-md hover:bg-gray-200 transition duration-300" aria-label="Change language" aria-haspopup="true" aria-expanded="false" aria-controls="mobile-lang-options"><i class="fas fa-globe"></i></button>
+               <button id="mobile-menu-toggle" class="p-2 text-gray-700 hover:text-blue-600 transition duration-300 focus:outline-none" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav-content"><svg class="w-6 h-6 icon-open" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg><svg class="w-6 h-6 icon-close hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+           </div>
+       </div>
+       <div id="mobile-nav-content" class="hidden md:hidden bg-white border-t border-gray-200">
+           <ul class="py-3 px-6 space-y-3">
+               <li><a data-translate="navHomeMobile" href="index.html" class="nav-link-mobile block py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 rounded-lg transition duration-300">Início</a></li>
+               <li><a data-translate="navAboutMobile" href="about.html" class="nav-link-mobile block py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 rounded-lg transition duration-300">Sobre</a></li>
+               <li><a data-translate="navPortfolioMobile" href="portfolio.html" class="nav-link-mobile block py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 rounded-lg transition duration-300">Portfólio</a></li>
+               <li><a data-translate="navContactMobile" href="contact.html" class="nav-link-mobile block py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 rounded-lg transition duration-300">Contato</a></li>
+               <li>
+                   <div id="mobile-lang-options" class="hidden pt-3 space-y-2 mt-2 border-t border-gray-200">
+                       <button data-lang="pt" class="lang-option w-full text-left p-2 hover:bg-blue-50 transition duration-300 rounded-lg flex items-center gap-2"><span class="text-base">🇵🇹</span> Português</button>
+                       <button data-lang="en" class="lang-option w-full text-left p-2 hover:bg-blue-50 transition duration-300 rounded-lg flex items-center gap-2"><span class="text-base">🇺🇸</span> English</button>
+                   </div>
+               </li>
+           </ul>
+       </div>
+   </nav>
+
+  <!-- Conteúdo Principal -->
+  <main class="flex-grow container mx-auto px-4 py-12"> <!-- Ajustado py -->
+    <h2 data-translate="portfolioTitle" class="text-3xl font-bold text-center mb-10 text-gray-800">Meus Projetos</h2>
+    <div id="projects-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"> <!-- Ajustado gap e sm: -->
+      <!-- Loading Message -->
+       <p id="loading-message" data-translate="loadingProjects" class="col-span-full text-center text-gray-500 text-lg py-10">
+         <i class="fas fa-spinner fa-spin mr-2"></i> Carregando projetos...
+       </p>
+      <!-- Projects loaded by portfolio.js -->
     </div>
-  </nav>
+  </main>
 
-  <!-- Seção Portfólio -->
-  <section class="py-12 px-6">
-    <h2 class="text-3xl font-semibold text-center mb-6">Meus Projetos</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition">
-        <img src="imagem-projeto.jpg" class="w-full h-48 object-cover rounded-md">
-        <h3 class="text-xl font-bold mt-4">Projeto Nome</h3>
-        <p class="text-gray-600 text-sm">Descrição breve do projeto...</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Rodapé -->
-  <footer class="bg-gray-900 text-white text-center py-4 mt-6">
-    <p>&copy; 2025 Bruno Gomes - Todos os direitos reservados.</p>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white text-center py-6 mt-12"> <!-- Adicionado mt -->
+    <div class="container mx-auto px-6">
+       <p data-translate="footer" class="mb-2">&copy; <span id="currentYear"></span> Bruno Gomes - Todos os direitos reservados.</p>
+       <p class="text-sm text-gray-400" data-translate="heroSubtitle">Designer Gráfico & Desenvolvedor Web</p>
+     </div>
   </footer>
 
 </body>

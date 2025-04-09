@@ -1,0 +1,49 @@
+/* Base Styles */
+body {
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+   @apply font-sans text-gray-800 bg-gray-50; /* Aplicando fontes e cores base do body */
+}
+
+/* --- NAVBAR (Estilos específicos se necessário, além das classes Tailwind) --- */
+/* Exemplo: Linha animada (opcional) */
+/* .nav-link.active-menu::after { ... } */
+
+
+/* --- Language Selector --- */
+#lang-options, #mobile-lang-options {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- ABOUT PAGE --- */
+
+/* Animação para painéis das abas */
+.tab-panel {
+    animation: panelFadeIn 0.5s ease-out forwards;
+}
+
+@keyframes panelFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- FORM STYLES --- */
+/* Estilo para botão de submit desabilitado (durante envio) */
+#submit-button:disabled {
+    @apply bg-blue-400 cursor-not-allowed;
+}
+
+/* --- UTILITÁRIOS --- */
+/* Para esconder scrollbar */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

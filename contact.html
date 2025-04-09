@@ -3,46 +3,111 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contato - Bruno Gomes</title>
+  <meta name="description" content="Entre em contato com Bruno Gomes">
+  <title data-translate="contactTitleDoc">Contato - Bruno Gomes</title>
+  <link rel="stylesheet" href="css/styles.css">
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script defer src="js/lang.js"></script>
+  <script defer src="js/contact-form.js"></script>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="min-h-screen flex flex-col">
 
-  <!-- Navbar -->
-  <nav class="bg-white shadow-md py-4">
-    <div class="container mx-auto flex justify-between items-center px-6">
-      <a href="index.html" class="text-2xl font-bold text-gray-800">Bruno Gomes</a>
-      <ul class="flex space-x-6">
-        <li><a href="index.html" class="text-gray-600 hover:text-blue-500">Início</a></li>
-        <li><a href="about.html" class="text-gray-600 hover:text-blue-500">Sobre</a></li>
-        <li><a href="portfolio.html" class="text-gray-600 hover:text-blue-500">Portfólio</a></li>
-        <li><a href="contact.html" class="text-blue-500 hover:text-gray-600">Contato</a></li>
-      </ul>
-    </div>
+  <!-- Navbar Padronizada -->
+  <nav class="bg-white shadow-md py-4 sticky top-0 z-50">
+      <!-- ... (Cole a navbar padronizada completa do index.html aqui) ... -->
+       <div class="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+          <a href="index.html" data-translate="navLogo" class="text-2xl font-bold text-blue-700 hover:text-blue-600 transition duration-300 flex items-center"><svg class="w-8 h-8 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5"><path d="M12 2L3 7L12 12L21 7L12 2Z" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 17L12 22L21 17" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 12L12 17L21 12" stroke-linecap="round" stroke-linejoin="round"/></svg>BrunGmes</a>
+          <div class="hidden md:flex items-center gap-8">
+              <ul class="flex space-x-8">
+                  <li><a data-translate="navHome" href="index.html" class="nav-link text-gray-600 hover:text-blue-600 font-medium transition duration-300 py-2 border-b-2 border-transparent hover:border-blue-500">Início</a></li>
+                  <li><a data-translate="navAbout" href="about.html" class="nav-link text-gray-600 hover:text-blue-600 font-medium transition duration-300 py-2 border-b-2 border-transparent hover:border-blue-500">Sobre</a></li>
+                  <li><a data-translate="navPortfolio" href="portfolio.html" class="nav-link text-gray-600 hover:text-blue-600 font-medium transition duration-300 py-2 border-b-2 border-transparent hover:border-blue-500">Portfólio</a></li>
+                  <li><a data-translate="navContact" href="contact.html" class="nav-link text-gray-600 hover:text-blue-600 font-medium transition duration-300 py-2 border-b-2 border-transparent hover:border-blue-500">Contato</a></li>
+              </ul>
+              <div class="relative group">
+                  <button id="selected-lang" class="bg-gray-100 text-gray-700 px-4 py-2 rounded-md flex items-center gap-2 hover:bg-gray-200 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" aria-haspopup="true" aria-expanded="false" aria-controls="lang-options"></button>
+                  <div id="lang-options" class="hidden absolute right-0 bg-white border rounded-md shadow-lg w-40 mt-2 z-50 overflow-hidden" role="menu">
+                      <button data-lang="pt" class="lang-option w-full text-left px-4 py-2 hover:bg-blue-50 transition duration-300 flex items-center gap-2" role="menuitem"><span class="text-base">🇵🇹</span> Português</button>
+                      <button data-lang="en" class="lang-option w-full text-left px-4 py-2 hover:bg-blue-50 transition duration-300 flex items-center gap-2" role="menuitem"><span class="text-base">🇺🇸</span> English</button>
+                  </div>
+              </div>
+          </div>
+          <div class="md:hidden flex items-center gap-4">
+              <button id="mobile-lang-toggle" class="p-2 text-lg bg-gray-100 rounded-md hover:bg-gray-200 transition duration-300" aria-label="Change language" aria-haspopup="true" aria-expanded="false" aria-controls="mobile-lang-options"><i class="fas fa-globe"></i></button>
+              <button id="mobile-menu-toggle" class="p-2 text-gray-700 hover:text-blue-600 transition duration-300 focus:outline-none" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav-content"><svg class="w-6 h-6 icon-open" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg><svg class="w-6 h-6 icon-close hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+          </div>
+      </div>
+      <div id="mobile-nav-content" class="hidden md:hidden bg-white border-t border-gray-200">
+          <ul class="py-3 px-6 space-y-3">
+              <li><a data-translate="navHomeMobile" href="index.html" class="nav-link-mobile block py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 rounded-lg transition duration-300">Início</a></li>
+              <li><a data-translate="navAboutMobile" href="about.html" class="nav-link-mobile block py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 rounded-lg transition duration-300">Sobre</a></li>
+              <li><a data-translate="navPortfolioMobile" href="portfolio.html" class="nav-link-mobile block py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 rounded-lg transition duration-300">Portfólio</a></li>
+              <li><a data-translate="navContactMobile" href="contact.html" class="nav-link-mobile block py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 rounded-lg transition duration-300">Contato</a></li>
+              <li>
+                  <div id="mobile-lang-options" class="hidden pt-3 space-y-2 mt-2 border-t border-gray-200">
+                      <button data-lang="pt" class="lang-option w-full text-left p-2 hover:bg-blue-50 transition duration-300 rounded-lg flex items-center gap-2"><span class="text-base">🇵🇹</span> Português</button>
+                      <button data-lang="en" class="lang-option w-full text-left p-2 hover:bg-blue-50 transition duration-300 rounded-lg flex items-center gap-2"><span class="text-base">🇺🇸</span> English</button>
+                  </div>
+              </li>
+          </ul>
+      </div>
   </nav>
 
-  <!-- Seção de Contato -->
-  <section class="max-w-lg mx-auto bg-white shadow-md rounded-lg p-8 mt-12">
-    <h2 class="text-3xl font-bold text-center">Entre em Contato</h2>
-    <p class="text-gray-600 text-center mt-2">Fale comigo através do formulário abaixo ou pelas redes sociais.</p>
+  <!-- Conteúdo Principal -->
+  <main class="flex-grow container mx-auto px-4 py-12 max-w-lg"> <!-- Ajustado Padding Y -->
+    <section class="bg-white rounded-lg shadow-lg p-8"> <!-- Aumentado shadow e padding -->
+      <h2 data-translate="contactTitle" class="text-3xl font-bold text-center mb-4 text-gray-800">Entre em Contato</h2>
+      <p data-translate="contactText" class="text-gray-600 text-center mb-8">Fale comigo através do formulário abaixo ou pelas redes sociais.</p>
 
-    <form class="mt-6">
-      <label class="block mb-2 text-sm font-bold text-gray-700">Nome</label>
-      <input type="text" placeholder="Seu nome" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
-      
-      <label class="block mt-4 mb-2 text-sm font-bold text-gray-700">E-mail</label>
-      <input type="email" placeholder="seu@email.com" class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400">
-      
-      <label class="block mt-4 mb-2 text-sm font-bold text-gray-700">Mensagem</label>
-      <textarea rows="4" placeholder="Escreva sua mensagem aqui..." class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
+      <div id="form-feedback" class="mb-4 text-center h-6"></div> <!-- Div para feedback -->
 
-      <button class="w-full bg-blue-600 text-white mt-4 px-4 py-2 rounded-md hover:bg-blue-700 transition">Enviar</button>
-    </form>
-  </section>
+      <form id="contact-form" action="https://formspree.io/f/SEU_FORM_ID_REAL" method="POST" class="space-y-5">
+         <!-- Substitua SEU_FORM_ID_REAL pelo seu ID Formspree -->
+        <div>
+          <label for="input-name" data-translate="labelName" class="block text-sm font-medium text-gray-700 mb-1">Nome</label>
+          <input
+            type="text" id="input-name" name="name" required
+            data-translate-placeholder="placeholderName" placeholder="Seu nome"
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+          >
+        </div>
 
-  <!-- Rodapé -->
-  <footer class="bg-gray-900 text-white text-center py-4 mt-6">
-    <p>&copy; 2025 Bruno Gomes - Todos os direitos reservados.</p>
+        <div>
+          <label for="input-email" data-translate="labelEmail" class="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
+          <input
+            type="email" id="input-email" name="email" required
+            data-translate-placeholder="placeholderEmail" placeholder="seu@email.com"
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+          >
+        </div>
+
+        <div>
+          <label for="input-message" data-translate="labelMessage" class="block text-sm font-medium text-gray-700 mb-1">Mensagem</label>
+          <textarea
+            id="input-message" name="message" rows="5" required
+            data-translate-placeholder="placeholderMessage" placeholder="Escreva sua mensagem aqui..."
+            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+          ></textarea>
+        </div>
+
+        <button
+          data-translate="btnSend" type="submit" id="submit-button"
+          class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-md transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-70"
+        >
+          Enviar Mensagem <!-- Texto mais explícito -->
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white text-center py-6 mt-12"> <!-- Adicionado mt -->
+    <div class="container mx-auto px-6">
+      <p data-translate="footer" class="mb-2">&copy; <span id="currentYear"></span> Bruno Gomes - Todos os direitos reservados.</p>
+      <p class="text-sm text-gray-400" data-translate="heroSubtitle">Designer Gráfico & Desenvolvedor Web</p>
+    </div>
   </footer>
 
 </body>

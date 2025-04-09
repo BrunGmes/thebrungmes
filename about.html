@@ -3,36 +3,243 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sobre Mim - Bruno Gomes</title>
+  <meta name="description" content="Sobre Bruno Gomes - Designer e Desenvolvedor Web especializado em soluções digitais criativas e eficientes">
+  <meta name="keywords" content="design gráfico, desenvolvimento web, UI/UX, portfólio, freelancer, Bruno Gomes, Torres Vedras">
+  <meta name="author" content="Bruno Gomes">
+  <title data-translate="aboutTitleDoc">Sobre Mim | Bruno Gomes - Designer & Desenvolvedor</title>
+  <link rel="stylesheet" href="css/styles.css">
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preload" href="images/perfil.jpg" as="image">
+  <script defer src="js/lang.js"></script>
+  <script defer src="js/about-tabs.js"></script>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="min-h-screen flex flex-col">
 
-  <!-- Navbar -->
-  <nav class="bg-white shadow-md py-4">
-    <div class="container mx-auto flex justify-between items-center px-6">
-      <a href="index.html" class="text-2xl font-bold text-gray-800">Bruno Gomes</a>
-      <ul class="flex space-x-6">
-        <li><a href="index.html" class="text-gray-600 hover:text-blue-500">Início</a></li>
-        <li><a href="about.html" class="text-blue-500 hover:text-gray-600">Sobre</a></li>
-        <li><a href="portfolio.html" class="text-gray-600 hover:text-blue-500">Portfólio</a></li>
-        <li><a href="contact.html" class="text-gray-600 hover:text-blue-500">Contato</a></li>
-      </ul>
-    </div>
-  </nav>
+  <!-- Navbar Padronizada -->
+   <nav class="bg-white shadow-md py-4 sticky top-0 z-50">
+       <!-- ... (Cole a navbar padronizada completa do index.html aqui) ... -->
+        <div class="container mx-auto px-4 sm:px-6 flex justify-between items-center">
+           <a href="index.html" data-translate="navLogo" class="text-2xl font-bold text-blue-700 hover:text-blue-600 transition duration-300 flex items-center"><svg class="w-8 h-8 mr-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5"><path d="M12 2L3 7L12 12L21 7L12 2Z" fill="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 17L12 22L21 17" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 12L12 17L21 12" stroke-linecap="round" stroke-linejoin="round"/></svg>BrunGmes</a>
+           <div class="hidden md:flex items-center gap-8">
+               <ul class="flex space-x-8">
+                   <li><a data-translate="navHome" href="index.html" class="nav-link text-gray-600 hover:text-blue-600 font-medium transition duration-300 py-2 border-b-2 border-transparent hover:border-blue-500">Início</a></li>
+                   <li><a data-translate="navAbout" href="about.html" class="nav-link text-gray-600 hover:text-blue-600 font-medium transition duration-300 py-2 border-b-2 border-transparent hover:border-blue-500">Sobre</a></li>
+                   <li><a data-translate="navPortfolio" href="portfolio.html" class="nav-link text-gray-600 hover:text-blue-600 font-medium transition duration-300 py-2 border-b-2 border-transparent hover:border-blue-500">Portfólio</a></li>
+                   <li><a data-translate="navContact" href="contact.html" class="nav-link text-gray-600 hover:text-blue-600 font-medium transition duration-300 py-2 border-b-2 border-transparent hover:border-blue-500">Contato</a></li>
+               </ul>
+               <div class="relative group">
+                   <button id="selected-lang" class="bg-gray-100 text-gray-700 px-4 py-2 rounded-md flex items-center gap-2 hover:bg-gray-200 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" aria-haspopup="true" aria-expanded="false" aria-controls="lang-options"></button>
+                   <div id="lang-options" class="hidden absolute right-0 bg-white border rounded-md shadow-lg w-40 mt-2 z-50 overflow-hidden" role="menu">
+                       <button data-lang="pt" class="lang-option w-full text-left px-4 py-2 hover:bg-blue-50 transition duration-300 flex items-center gap-2" role="menuitem"><span class="text-base">🇵🇹</span> Português</button>
+                       <button data-lang="en" class="lang-option w-full text-left px-4 py-2 hover:bg-blue-50 transition duration-300 flex items-center gap-2" role="menuitem"><span class="text-base">🇺🇸</span> English</button>
+                   </div>
+               </div>
+           </div>
+           <div class="md:hidden flex items-center gap-4">
+               <button id="mobile-lang-toggle" class="p-2 text-lg bg-gray-100 rounded-md hover:bg-gray-200 transition duration-300" aria-label="Change language" aria-haspopup="true" aria-expanded="false" aria-controls="mobile-lang-options"><i class="fas fa-globe"></i></button>
+               <button id="mobile-menu-toggle" class="p-2 text-gray-700 hover:text-blue-600 transition duration-300 focus:outline-none" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-nav-content"><svg class="w-6 h-6 icon-open" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg><svg class="w-6 h-6 icon-close hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+           </div>
+       </div>
+       <div id="mobile-nav-content" class="hidden md:hidden bg-white border-t border-gray-200">
+           <ul class="py-3 px-6 space-y-3">
+               <li><a data-translate="navHomeMobile" href="index.html" class="nav-link-mobile block py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 rounded-lg transition duration-300">Início</a></li>
+               <li><a data-translate="navAboutMobile" href="about.html" class="nav-link-mobile block py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 rounded-lg transition duration-300">Sobre</a></li>
+               <li><a data-translate="navPortfolioMobile" href="portfolio.html" class="nav-link-mobile block py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 rounded-lg transition duration-300">Portfólio</a></li>
+               <li><a data-translate="navContactMobile" href="contact.html" class="nav-link-mobile block py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 px-3 rounded-lg transition duration-300">Contato</a></li>
+               <li>
+                   <div id="mobile-lang-options" class="hidden pt-3 space-y-2 mt-2 border-t border-gray-200">
+                       <button data-lang="pt" class="lang-option w-full text-left p-2 hover:bg-blue-50 transition duration-300 rounded-lg flex items-center gap-2"><span class="text-base">🇵🇹</span> Português</button>
+                       <button data-lang="en" class="lang-option w-full text-left p-2 hover:bg-blue-50 transition duration-300 rounded-lg flex items-center gap-2"><span class="text-base">🇺🇸</span> English</button>
+                   </div>
+               </li>
+           </ul>
+       </div>
+   </nav>
 
-  <!-- Seção Sobre Mim -->
-  <section class="max-w-3xl mx-auto bg-white shadow-md rounded-lg p-8 mt-12">
-    <img src="minha-foto.jpg" class="w-40 h-40 rounded-full mx-auto mb-6">
-    <h2 class="text-3xl font-bold text-center">Sobre Mim</h2>
-    <p class="text-gray-700 text-lg mt-4 text-center">
-      Olá! Sou Bruno Gomes, designer gráfico e desenvolvedor web apaixonado por criar experiências visuais incríveis. Tenho experiência em diversas ferramentas como Photoshop, Illustrator e Tailwind CSS.
-    </p>
-  </section>
+  <!-- Conteúdo Principal -->
+  <main class="flex-grow container mx-auto px-4 py-12 max-w-5xl"> <!-- Aumentado max-w -->
+    <!-- Seção Perfil -->
+    <section class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-xl shadow-lg p-8 mb-10"> <!-- Aumentado shadow e mb -->
+      <div class="flex flex-col md:flex-row items-center gap-10"> <!-- Aumentado gap -->
+        <div class="relative flex-shrink-0">
+          <div class="absolute -inset-1 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full blur-lg opacity-60 transition duration-500 group-hover:opacity-80"></div>
+          <img src="images/perfil.jpg" alt="Bruno Gomes, designer e desenvolvedor web"
+               class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover shadow-xl border-4 border-white relative z-10 transition transform hover:scale-105 duration-300"
+               loading="eager">
+        </div>
+        <div class="text-center md:text-left">
+          <h1 data-translate="aboutHeroName" class="text-3xl md:text-4xl font-bold mb-3 text-gray-800">Bruno Gomes</h1>
+          <p data-translate="aboutHeroRole" class="text-xl text-blue-700 mb-5 font-semibold">Designer & Desenvolvedor Web</p>
+          <div class="flex flex-wrap justify-center md:justify-start gap-2 mb-6">
+            <span class="bg-blue-100 text-blue-800 py-1 px-3 rounded-full text-sm font-medium shadow-sm"><i class="fas fa-code mr-1.5"></i>Front-end</span>
+            <span class="bg-indigo-100 text-indigo-800 py-1 px-3 rounded-full text-sm font-medium shadow-sm"><i class="fas fa-palette mr-1.5"></i>UI/UX</span>
+            <span class="bg-purple-100 text-purple-800 py-1 px-3 rounded-full text-sm font-medium shadow-sm"><i class="fas fa-paint-brush mr-1.5"></i>Design Gráfico</span>
+          </div>
+          <div class="flex justify-center md:justify-start gap-5">
+             <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-700 transition-colors duration-300" aria-label="GitHub"><i class="fab fa-github fa-lg"></i></a>
+             <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-700 transition-colors duration-300" aria-label="LinkedIn"><i class="fab fa-linkedin fa-lg"></i></a>
+             <a href="https://behance.net/" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-700 transition-colors duration-300" aria-label="Behance"><i class="fab fa-behance fa-lg"></i></a>
+             <a href="mailto:contato@brunogomes.com" class="text-gray-600 hover:text-red-600 transition-colors duration-300" aria-label="Email"><i class="fas fa-envelope fa-lg"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- Rodapé -->
-  <footer class="bg-gray-900 text-white text-center py-4 mt-6">
-    <p>&copy; 2025 Bruno Gomes - Todos os direitos reservados.</p>
+    <!-- Conteúdo com Abas -->
+    <section class="bg-white rounded-xl shadow-lg overflow-hidden">
+      <!-- Navegação das Abas -->
+      <div class="border-b border-gray-200">
+        <nav class="flex -mb-px hide-scrollbar overflow-x-auto" aria-label="Tabs">
+           <button class="tab-button active-tab whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm focus:outline-none transition-all duration-200 ease-in-out border-blue-500 text-blue-600" data-target="#about-content" role="tab" aria-selected="true"><i class="fas fa-user mr-2 opacity-80"></i><span data-translate="tabAbout">Sobre Mim</span></button>
+           <button class="tab-button whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm focus:outline-none transition-all duration-200 ease-in-out border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-target="#skills-content" role="tab" aria-selected="false"><i class="fas fa-code mr-2 opacity-80"></i><span data-translate="tabSkills">Habilidades</span></button>
+           <button class="tab-button whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm focus:outline-none transition-all duration-200 ease-in-out border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-target="#experience-content" role="tab" aria-selected="false"><i class="fas fa-briefcase mr-2 opacity-80"></i><span data-translate="tabExperience">Experiência</span></button>
+           <button class="tab-button whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm focus:outline-none transition-all duration-200 ease-in-out border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-target="#education-content" role="tab" aria-selected="false"><i class="fas fa-graduation-cap mr-2 opacity-80"></i><span data-translate="tabEducation">Educação</span></button>
+        </nav>
+      </div>
+
+      <!-- Painéis de Conteúdo das Abas -->
+      <div class="p-6 md:p-8">
+        <!-- Painel Sobre Mim -->
+        <div id="about-content" class="tab-panel" role="tabpanel">
+          <article class="prose max-w-none prose-indigo"> <!-- Usando prose para melhor formatação de texto -->
+             <h2 data-translate="aboutMeTitle" class="text-2xl font-bold font-heading mb-5 text-gray-800 flex items-center"><span class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 inline-flex items-center justify-center mr-3 shadow-sm"><i class="fas fa-user-circle"></i></span>Sobre Mim</h2>
+             <p data-translate="aboutText1">Olá! Sou Bruno Gomes, designer gráfico e desenvolvedor web apaixonado por criar experiências visuais impactantes. Com mais de 3 anos de experiência profissional, dedico-me a construir soluções digitais que combinam estética e funcionalidade.</p>
+             <p data-translate="aboutText2">Minha abordagem une criatividade ao pensamento técnico, permitindo que eu crie desde identidades visuais até aplicações web completas. Acredito que um bom design é aquele que resolve problemas reais e proporciona uma experiência intuitiva e agradável ao usuário.</p>
+             <p data-translate="aboutText3">Estou constantemente aprimorando minhas habilidades e acompanhando as últimas tendências em design e desenvolvimento web para oferecer sempre as melhores soluções aos meus clientes.</p>
+          </article>
+          <hr class="my-8">
+          <!-- Informações de Contato -->
+          <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+             <h3 data-translate="contactInfoTitle" class="text-xl font-semibold text-gray-800 mb-5">Informações de Contato</h3>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
+               <div class="flex items-center space-x-3"><span class="flex-shrink-0 w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shadow-sm"><i class="fas fa-map-marker-alt"></i></span><div><h4 data-translate="contactLocationTitle" class="font-medium text-gray-700 text-sm">Localização</h4><p data-translate="contactLocationValue" class="text-gray-600">Torres Vedras, Portugal</p></div></div>
+               <div class="flex items-center space-x-3"><span class="flex-shrink-0 w-10 h-10 rounded-full bg-green-100 text-green-600 flex items-center justify-center shadow-sm"><i class="fas fa-envelope"></i></span><div><h4 data-translate="contactEmailTitle" class="font-medium text-gray-700 text-sm">Email</h4><a href="mailto:contato@brunogomes.com" class="text-blue-600 hover:underline">contato@brunogomes.com</a></div></div>
+               <div class="flex items-center space-x-3"><span class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center shadow-sm"><i class="fas fa-laptop-code"></i></span><div><h4 data-translate="contactSpecialtyTitle" class="font-medium text-gray-700 text-sm">Especialidade</h4><p data-translate="contactSpecialtyValue" class="text-gray-600">Design Gráfico & Desenvolvimento Web</p></div></div>
+               <div class="flex items-center space-x-3"><span class="flex-shrink-0 w-10 h-10 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center shadow-sm"><i class="fas fa-calendar-check"></i></span><div><h4 data-translate="contactAvailabilityTitle" class="font-medium text-gray-700 text-sm">Disponibilidade</h4><p data-translate="contactAvailabilityValue" class="text-green-600 font-medium">Disponível para novos projetos</p></div></div>
+             </div>
+           </div>
+        </div>
+
+        <!-- Painel Habilidades -->
+        <div id="skills-content" class="tab-panel hidden" role="tabpanel">
+          <section>
+            <h2 data-translate="skillsTitle" class="text-2xl font-bold font-heading mb-6 text-gray-800 flex items-center"><span class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 inline-flex items-center justify-center mr-3 shadow-sm"><i class="fas fa-code"></i></span>Competências</h2>
+            <!-- Programação -->
+            <div class="mb-8">
+              <h3 data-translate="programmingTitle" class="text-xl font-semibold mb-5 text-gray-800 border-b pb-2">Programação</h3>
+              <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+                <!-- Skill Card com classes utilitárias diretas -->
+                 <div class="bg-white border border-gray-200 rounded-lg p-4 text-center shadow-sm hover:shadow-lg group hover:border-blue-400 flex flex-col items-center transition-all duration-300 ease-in-out"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5 Icon" class="w-10 h-10 mb-2 object-contain group-hover:scale-110 transition-transform duration-300 ease-in-out"><div class="font-medium text-gray-800">HTML</div><div class="mt-2 relative pt-1 w-full overflow-hidden h-2 text-xs flex rounded bg-gray-200"><div class="bg-blue-500 h-full transition-all duration-300 w-[90%]"></div></div><div class="text-xs text-gray-500 mt-1" data-translate="skillAdvanced">Avançado</div></div>
+                 <div class="bg-white border border-gray-200 rounded-lg p-4 text-center shadow-sm hover:shadow-lg group hover:border-blue-400 flex flex-col items-center transition-all duration-300 ease-in-out"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3 Icon" class="w-10 h-10 mb-2 object-contain group-hover:scale-110 transition-transform duration-300 ease-in-out"><div class="font-medium text-gray-800">CSS</div><div class="mt-2 relative pt-1 w-full overflow-hidden h-2 text-xs flex rounded bg-gray-200"><div class="bg-blue-500 h-full transition-all duration-300 w-[90%]"></div></div><div class="text-xs text-gray-500 mt-1" data-translate="skillAdvanced">Avançado</div></div>
+                 <div class="bg-white border border-gray-200 rounded-lg p-4 text-center shadow-sm hover:shadow-lg group hover:border-blue-400 flex flex-col items-center transition-all duration-300 ease-in-out"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript Icon" class="w-10 h-10 mb-2 object-contain group-hover:scale-110 transition-transform duration-300 ease-in-out"><div class="font-medium text-gray-800">JavaScript</div><div class="mt-2 relative pt-1 w-full overflow-hidden h-2 text-xs flex rounded bg-gray-200"><div class="bg-blue-500 h-full transition-all duration-300 w-[70%]"></div></div><div class="text-xs text-gray-500 mt-1" data-translate="skillIntermediate">Intermediário</div></div>
+                 <div class="bg-white border border-gray-200 rounded-lg p-4 text-center shadow-sm hover:shadow-lg group hover:border-blue-400 flex flex-col items-center transition-all duration-300 ease-in-out"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Icon" class="w-10 h-10 mb-2 object-contain group-hover:scale-110 transition-transform duration-300 ease-in-out"><div class="font-medium text-gray-800">React</div><div class="mt-2 relative pt-1 w-full overflow-hidden h-2 text-xs flex rounded bg-gray-200"><div class="bg-blue-500 h-full transition-all duration-300 w-[65%]"></div></div><div class="text-xs text-gray-500 mt-1" data-translate="skillIntermediate">Intermediário</div></div>
+                 <div class="bg-white border border-gray-200 rounded-lg p-4 text-center shadow-sm hover:shadow-lg group hover:border-blue-400 flex flex-col items-center transition-all duration-300 ease-in-out"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" alt="Tailwind CSS Icon" class="w-10 h-10 mb-2 object-contain group-hover:scale-110 transition-transform duration-300 ease-in-out"><div class="font-medium text-gray-800">Tailwind</div><div class="mt-2 relative pt-1 w-full overflow-hidden h-2 text-xs flex rounded bg-gray-200"><div class="bg-blue-500 h-full transition-all duration-300 w-[85%]"></div></div><div class="text-xs text-gray-500 mt-1" data-translate="skillAdvanced">Avançado</div></div>
+              </div>
+            </div>
+            <!-- Design -->
+            <div>
+              <h3 data-translate="designTitle" class="text-xl font-semibold mb-5 text-gray-800 border-b pb-2">Design</h3>
+              <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+                 <div class="bg-white border border-gray-200 rounded-lg p-4 text-center shadow-sm hover:shadow-lg group hover:border-blue-400 flex flex-col items-center transition-all duration-300 ease-in-out"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" alt="Photoshop Icon" class="w-10 h-10 mb-2 object-contain group-hover:scale-110 transition-transform duration-300 ease-in-out"><div class="font-medium text-gray-800">Photoshop</div><div class="mt-2 relative pt-1 w-full overflow-hidden h-2 text-xs flex rounded bg-gray-200"><div class="bg-blue-500 h-full transition-all duration-300 w-[90%]"></div></div><div class="text-xs text-gray-500 mt-1" data-translate="skillAdvanced">Avançado</div></div>
+                 <div class="bg-white border border-gray-200 rounded-lg p-4 text-center shadow-sm hover:shadow-lg group hover:border-blue-400 flex flex-col items-center transition-all duration-300 ease-in-out"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg" alt="Illustrator Icon" class="w-10 h-10 mb-2 object-contain group-hover:scale-110 transition-transform duration-300 ease-in-out"><div class="font-medium text-gray-800">Illustrator</div><div class="mt-2 relative pt-1 w-full overflow-hidden h-2 text-xs flex rounded bg-gray-200"><div class="bg-blue-500 h-full transition-all duration-300 w-[85%]"></div></div><div class="text-xs text-gray-500 mt-1" data-translate="skillAdvanced">Avançado</div></div>
+                 <div class="bg-white border border-gray-200 rounded-lg p-4 text-center shadow-sm hover:shadow-lg group hover:border-blue-400 flex flex-col items-center transition-all duration-300 ease-in-out"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma Icon" class="w-10 h-10 mb-2 object-contain group-hover:scale-110 transition-transform duration-300 ease-in-out"><div class="font-medium text-gray-800">Figma</div><div class="mt-2 relative pt-1 w-full overflow-hidden h-2 text-xs flex rounded bg-gray-200"><div class="bg-blue-500 h-full transition-all duration-300 w-[75%]"></div></div><div class="text-xs text-gray-500 mt-1" data-translate="skillIntermediate">Intermediário</div></div>
+                 <div class="bg-white border border-gray-200 rounded-lg p-4 text-center shadow-sm hover:shadow-lg group hover:border-blue-400 flex flex-col items-center transition-all duration-300 ease-in-out"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xd/xd-plain.svg" alt="Adobe XD Icon" class="w-10 h-10 mb-2 object-contain group-hover:scale-110 transition-transform duration-300 ease-in-out"><div class="font-medium text-gray-800">Adobe XD</div><div class="mt-2 relative pt-1 w-full overflow-hidden h-2 text-xs flex rounded bg-gray-200"><div class="bg-blue-500 h-full transition-all duration-300 w-[70%]"></div></div><div class="text-xs text-gray-500 mt-1" data-translate="skillIntermediate">Intermediário</div></div>
+                 <div class="bg-white border border-gray-200 rounded-lg p-4 text-center shadow-sm hover:shadow-lg group hover:border-blue-400 flex flex-col items-center transition-all duration-300 ease-in-out"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aftereffects/aftereffects-original.svg" alt="After Effects Icon" class="w-10 h-10 mb-2 object-contain group-hover:scale-110 transition-transform duration-300 ease-in-out"><div class="font-medium text-gray-800">After Effects</div><div class="mt-2 relative pt-1 w-full overflow-hidden h-2 text-xs flex rounded bg-gray-200"><div class="bg-blue-500 h-full transition-all duration-300 w-[40%]"></div></div><div class="text-xs text-gray-500 mt-1" data-translate="skillBasic">Básico</div></div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Painel Experiência -->
+        <div id="experience-content" class="tab-panel hidden" role="tabpanel">
+           <section>
+             <h2 data-translate="experienceTitle" class="text-2xl font-bold font-heading mb-6 text-gray-800 flex items-center"><span class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 inline-flex items-center justify-center mr-3 shadow-sm"><i class="fas fa-briefcase"></i></span>Experiência Profissional</h2>
+             <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-blue-300 before:via-blue-200 before:to-blue-100">
+               <!-- Item Experiência 1 -->
+               <div class="relative flex items-start md:flex-row-reverse md:justify-between group">
+                 <div class="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-blue-200 group-hover:border-blue-500 shadow-sm z-10 transition-all duration-300 ease-in-out md:absolute md:translate-x-1/2 md:right-0 md:top-1/2 md:-translate-y-1/2"><i class="fas fa-briefcase text-blue-500 group-hover:text-blue-600 transition-colors duration-300 ease-in-out"></i></div>
+                 <div class="flex-1 bg-white p-5 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 ease-in-out border border-gray-100 group-hover:border-blue-200 md:mr-10">
+                   <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-x-2"><h3 data-translate="exp1Title" class="font-bold text-lg text-gray-800 group-hover:text-blue-700 transition-colors duration-300 ease-in-out">Designer Gráfico @ 360imprimir</h3><div class="text-blue-600 font-medium text-sm flex items-center mt-1 sm:mt-0 whitespace-nowrap flex-shrink-0"><i class="far fa-calendar-alt mr-2"></i><span data-translate="exp1Date">2019 - 2022</span></div></div>
+                   <p data-translate="exp1Desc" class="text-gray-700 mb-4 text-sm leading-relaxed">Responsável pela preparação de arte final para produção, análise e correção de arquivos enviados pelos clientes, desenvolvimento de layouts personalizados e garantia de qualidade nas entregas, trabalhando em equipe para resolver problemas técnicos e criativos.</p>
+                   <div class="mt-3 flex flex-wrap gap-2"><span class="px-3 py-1 bg-indigo-100 hover:bg-indigo-200 text-indigo-800 text-xs rounded-full font-medium transition-colors duration-200" data-translate="exp1Tag1">Design Gráfico</span><span class="px-3 py-1 bg-indigo-100 hover:bg-indigo-200 text-indigo-800 text-xs rounded-full font-medium transition-colors duration-200" data-translate="exp1Tag2">Arte Final</span><span class="px-3 py-1 bg-indigo-100 hover:bg-indigo-200 text-indigo-800 text-xs rounded-full font-medium transition-colors duration-200" data-translate="exp1Tag3">Controle de Qualidade</span></div>
+                   <div class="mt-4 pt-4 border-t border-gray-200 text-sm"><h4 class="font-medium text-gray-700 mb-2" data-translate="expAchieveTitle">Conquistas principais:</h4><ul class="space-y-1.5 text-gray-600 list-none pl-0"><li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2 flex-shrink-0"></i><span data-translate="exp1Achieve1">Otimização do fluxo de trabalho de arte final, reduzindo o tempo de produção em 25%</span></li><li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2 flex-shrink-0"></i><span data-translate="exp1Achieve2">Implementação de padrões de qualidade que reduziram erros de impressão em 30%</span></li></ul></div>
+                 </div>
+               </div>
+               <!-- Item Experiência 2 -->
+                <div class="relative flex items-start md:justify-between group">
+                 <div class="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-blue-200 group-hover:border-blue-500 shadow-sm z-10 transition-all duration-300 ease-in-out md:absolute md:translate-x-1/2 md:left-0 md:top-1/2 md:-translate-y-1/2"><i class="fas fa-laptop-code text-blue-500 group-hover:text-blue-600 transition-colors duration-300 ease-in-out"></i></div>
+                 <div class="flex-1 bg-white p-5 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 ease-in-out border border-gray-100 group-hover:border-blue-200 md:ml-10">
+                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-2 gap-x-2"><h3 data-translate="exp2Title" class="font-bold text-lg text-gray-800 group-hover:text-blue-700 transition-colors duration-300 ease-in-out">Desenvolvedor Web Freelancer</h3><div class="text-blue-600 font-medium text-sm flex items-center mt-1 sm:mt-0 whitespace-nowrap flex-shrink-0"><i class="far fa-calendar-alt mr-2"></i><span data-translate="exp2Date">2018 - Presente</span></div></div>
+                     <p data-translate="exp2Desc" class="text-gray-700 mb-4 text-sm leading-relaxed">Desenvolvimento de websites responsivos para pequenos negócios e profissionais independentes, com foco em design moderno, usabilidade e otimização para mecanismos de busca.</p>
+                     <div class="mt-3 flex flex-wrap gap-2"><span class="px-3 py-1 bg-indigo-100 hover:bg-indigo-200 text-indigo-800 text-xs rounded-full font-medium transition-colors duration-200" data-translate="exp2Tag1">HTML/CSS</span><span class="px-3 py-1 bg-indigo-100 hover:bg-indigo-200 text-indigo-800 text-xs rounded-full font-medium transition-colors duration-200" data-translate="exp2Tag2">JavaScript</span><span class="px-3 py-1 bg-indigo-100 hover:bg-indigo-200 text-indigo-800 text-xs rounded-full font-medium transition-colors duration-200" data-translate="exp2Tag3">Responsive Design</span><span class="px-3 py-1 bg-indigo-100 hover:bg-indigo-200 text-indigo-800 text-xs rounded-full font-medium transition-colors duration-200" data-translate="exp2Tag4">SEO</span></div>
+                     <div class="mt-4 pt-4 border-t border-gray-200 text-sm"><h4 class="font-medium text-gray-700 mb-2" data-translate="expAchieveTitle">Projetos destacados:</h4><ul class="space-y-1.5 text-gray-600 list-none pl-0"><li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2 flex-shrink-0"></i><span data-translate="exp2Achieve1">Redesign completo do site para estúdio de fotografia local, resultando em aumento de 40% nas consultas</span></li><li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-2 flex-shrink-0"></i><span data-translate="exp2Achieve2">Desenvolvimento de loja online para artesanato, incluindo sistema de pagamento e gestão de inventário</span></li></ul></div>
+                   </div>
+                </div>
+             </div>
+           </section>
+        </div>
+
+        <!-- Painel Educação -->
+        <div id="education-content" class="tab-panel hidden" role="tabpanel">
+           <section>
+             <h2 data-translate="educationTitle" class="text-2xl font-bold font-heading mb-6 text-gray-800 flex items-center"><span class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 inline-flex items-center justify-center mr-3 shadow-sm"><i class="fas fa-graduation-cap"></i></span>Formação Acadêmica</h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+               <!-- Card Educação 1 -->
+                <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 ease-in-out overflow-hidden border border-gray-100 group">
+                 <div class="h-20 flex items-center justify-center transition-all duration-300 ease-in-out bg-gradient-to-r from-blue-500 to-indigo-600 group-hover:from-blue-600 group-hover:to-indigo-700"><i class="fas fa-server text-white text-4xl opacity-30 group-hover:opacity-40 transition-opacity duration-300"></i></div>
+                 <div class="p-6">
+                   <div class="flex flex-col sm:flex-row justify-between items-start gap-2 mb-2"><div class="flex-grow"><h3 data-translate="edu1Title" class="font-bold text-lg text-gray-800 mb-0 leading-tight">Gestão de Equipamentos Informáticos</h3><p data-translate="edu1Level" class="text-blue-600 text-sm font-medium">Curso Técnico Superior Profissional</p></div><span data-translate="edu1Date" class="text-xs font-bold py-1 px-3 rounded self-start whitespace-nowrap mt-1 sm:mt-0 flex-shrink-0 bg-blue-100 text-blue-800">2017-2019</span></div>
+                   <div class="mt-3"><h4 data-translate="edu1School" class="font-semibold text-gray-700 mb-2 text-sm">Escola Secundária de Torres Vedras</h4><p data-translate="edu1Desc" class="text-gray-600 text-sm leading-relaxed mb-3">Programação em C#, C++ e desenvolvimento de projeto com Raspberry Pi. Foco em administração de redes e sistemas, manutenção de hardware e segurança informática.</p></div>
+                   <div class="mt-4 pt-4 border-t border-gray-200"><h4 data-translate="eduSkillsTitle" class="font-semibold text-gray-700 mb-2 text-sm">Competências adquiridas:</h4><div class="flex flex-wrap gap-1.5"><span class="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs rounded transition-colors duration-200" data-translate="edu1Skill1">C#</span><span class="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs rounded transition-colors duration-200" data-translate="edu1Skill2">C++</span><span class="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs rounded transition-colors duration-200" data-translate="edu1Skill3">Raspberry Pi</span><span class="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs rounded transition-colors duration-200" data-translate="edu1Skill4">Redes</span><span class="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs rounded transition-colors duration-200" data-translate="edu1Skill5">Hardware</span></div></div>
+                 </div>
+               </div>
+               <!-- Card Educação 2 -->
+               <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 ease-in-out overflow-hidden border border-gray-100 group">
+                 <div class="h-20 flex items-center justify-center transition-all duration-300 ease-in-out bg-gradient-to-r from-purple-500 to-pink-600 group-hover:from-purple-600 group-hover:to-pink-700"><i class="fas fa-paint-brush text-white text-4xl opacity-30 group-hover:opacity-40 transition-opacity duration-300"></i></div>
+                 <div class="p-6">
+                   <div class="flex flex-col sm:flex-row justify-between items-start gap-2 mb-2"><div class="flex-grow"><h3 data-translate="edu2Title" class="font-bold text-lg text-gray-800 mb-0 leading-tight">Design Gráfico e Comunicação Visual</h3><p data-translate="edu2Level" class="text-purple-600 text-sm font-medium">Curso Intensivo Profissional</p></div><span data-translate="edu2Date" class="text-xs font-bold py-1 px-3 rounded self-start whitespace-nowrap mt-1 sm:mt-0 flex-shrink-0 bg-purple-100 text-purple-800">2016-2017</span></div>
+                   <div class="mt-3"><h4 data-translate="edu2School" class="font-semibold text-gray-700 mb-2 text-sm">Centro de Formação Digital</h4><p data-translate="edu2Desc" class="text-gray-600 text-sm leading-relaxed mb-3">Formação intensiva em design gráfico, incluindo princípios de design, tipografia, teoria das cores, identidade visual e ferramentas Adobe.</p></div>
+                   <div class="mt-4 pt-4 border-t border-gray-200"><h4 data-translate="eduSkillsTitle" class="font-semibold text-gray-700 mb-2 text-sm">Competências adquiridas:</h4><div class="flex flex-wrap gap-1.5"><span class="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs rounded transition-colors duration-200" data-translate="edu2Skill1">Adobe Photoshop</span><span class="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs rounded transition-colors duration-200" data-translate="edu2Skill2">Adobe Illustrator</span><span class="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs rounded transition-colors duration-200" data-translate="edu2Skill3">InDesign</span><span class="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs rounded transition-colors duration-200" data-translate="edu2Skill4">Identidade Visual</span><span class="px-2 py-1 bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs rounded transition-colors duration-200" data-translate="edu2Skill5">Tipografia</span></div></div>
+                 </div>
+               </div>
+             </div>
+
+             <!-- Certificações -->
+             <div class="mt-10">
+               <h3 data-translate="certsTitle" class="text-xl font-semibold mb-5 text-gray-800">Certificações & Cursos Online</h3>
+               <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                 <ul class="space-y-4">
+                   <li class="flex items-start group">
+                     <div class="flex-shrink-0 w-8 h-8 rounded-full bg-green-100 group-hover:bg-green-200 text-green-600 flex items-center justify-center mr-3 transition-colors duration-300 shadow-sm"><i class="fas fa-certificate"></i></div>
+                     <div>
+                       <h4 data-translate="cert1Title" class="font-medium text-gray-800 group-hover:text-green-700 transition-colors duration-300">Desenvolvimento Front-end Moderno</h4>
+                       <p data-translate="cert1Desc" class="text-gray-600 text-sm">Udemy (2022) • HTML5, CSS3, JavaScript ES6+, React Basics</p>
+                     </div>
+                   </li>
+                   <li class="flex items-start group">
+                     <div class="flex-shrink-0 w-8 h-8 rounded-full bg-green-100 group-hover:bg-green-200 text-green-600 flex items-center justify-center mr-3 transition-colors duration-300 shadow-sm"><i class="fas fa-certificate"></i></div>
+                     <div>
+                       <h4 data-translate="cert2Title" class="font-medium text-gray-800 group-hover:text-green-700 transition-colors duration-300">UI/UX Design Fundamentals</h4>
+                       <p data-translate="cert2Desc" class="text-gray-600 text-sm">Coursera (2021) • Design de interfaces, prototipagem, testes de usabilidade</p>
+                     </div>
+                   </li>
+                 </ul>
+               </div>
+             </div>
+           </section>
+        </div>
+      </div> <!-- Fim dos Painéis de Conteúdo -->
+    </section> <!-- Fim do Bloco de Abas -->
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white text-center py-6 mt-12"> <!-- Adicionado mt -->
+     <div class="container mx-auto px-6">
+       <p data-translate="footer" class="mb-2">&copy; <span id="currentYear"></span> Bruno Gomes - Todos os direitos reservados.</p>
+       <p class="text-sm text-gray-400" data-translate="heroSubtitle">Designer Gráfico & Desenvolvedor Web</p>
+     </div>
   </footer>
 
 </body>
